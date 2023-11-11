@@ -11,6 +11,7 @@ try:
    data = pandas.read_csv("./data/words_to_learn.csv")
 except FileNotFoundError:
    orginal_data = pandas.read_csv("./data/french_words.csv")
+   print(orginal_data)
    to_learn = orginal_data.to_dict(orient="records")
 else:
    to_learn = data.to_dict(orient="records")  #it gives the values to list in dict [{'French': 'partie', 'English': 'part'}, {'French': 'histoire',
@@ -33,7 +34,7 @@ def is_known():
     to_learn.remove(current_card)
     print(len(to_learn))
     data = pandas.DataFrame(to_learn)
-    data.to_csv("data/words_to_learn.csv")
+    data.to_csv("data/words_to_learn.csv",index=False)
     next_card()
 
 
